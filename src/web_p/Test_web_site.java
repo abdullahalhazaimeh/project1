@@ -145,7 +145,7 @@ public class Test_web_site {
 		}
 	
 	
-	@Test(priority = 7, description = "Alert and confirm", enabled = true)
+	@Test(priority = 7, description = "Alert and confirm", enabled = false)
 	public void Switch_To_Alert_Example() throws InterruptedException {
 		WebElement nameBox = driver.findElement(By.id("name"));
 		nameBox.sendKeys("abedalraheem");
@@ -158,13 +158,46 @@ public class Test_web_site {
 
 		WebElement ConfirmBox = driver.findElement(By.id("confirmbtn"));
 		ConfirmBox.click();
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		// driver.switchTo().alert().accept();
 		// driver.switchTo().alert().dismiss();
 
 		// System.out.println(driver.switchTo().alert().getText());
+	}
+
+	
+	
+	@Test(priority = 8, description = " play with the data of the column " , enabled = true)
+
+	public void Web_Table_Example() {
+
+		WebElement TheTable = driver.findElement(By.id("product"));
+
+		List<WebElement> theDataInsideTheTable = TheTable.findElements(By.tagName("tr"));
+
+		for (int i = 1; i < theDataInsideTheTable.size(); i++) {
+			
+			int totalTdInTheRow = theDataInsideTheTable.get(i).findElements(By.tagName("td")).size();
+
+			System.out.println(
+					theDataInsideTheTable.get(i).findElements(By.tagName("td")).get(totalTdInTheRow - 1).getText());
+		}
 
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	@AfterTest()
@@ -174,9 +207,9 @@ public class Test_web_site {
 		
 }
 	
+
 	
-	
-	
+
 	
 	
 	
